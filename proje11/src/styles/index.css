@@ -1,5 +1,41 @@
 body {
-  background: green;
+  font-family: Arial, Helvetica, sans-serif;
   height: 100px;
   color: red;
+}
+
+.navigation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px 20px;
+}
+.navigation img {
+  max-width: 100%;
+  width: 200px;
+}
+.navigation a {
+  text-decoration: none;
+}
+.navigation ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3px;
+}
+.navigation ul li {
+  list-style: none;
+}
+
+.nofee {
+  background: url(../../assets/images/bank-tree.jpeg) center/cover;
+  margin: 36px 0;
+  height: 380px;
+  position: relative;
 }/*# sourceMappingURL=index.css.map */
