@@ -10,13 +10,17 @@
   }
   a {
     text-decoration: none;
+  
   }
   ul {
     display: flex;
     gap: 3px;
 
     li {
+      font-weight: bold;
       list-style: none;
+      color: #2c3e50;
+      
     }
   }
 }

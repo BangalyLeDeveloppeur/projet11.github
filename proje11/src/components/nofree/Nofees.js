@@ -1,12 +1,17 @@
-import React from 'react';
+import React from "react";
 
 const Nofees = () => {
-    return (
-        <div className='nofee'>
-            <h1>Bonjour sur le proje 11 du parcour</h1>
-            
-        </div>
-    );
+  return (
+    <div className="nofee">
+      <section class="nofee-content">
+          <h2 class="sr-only">Promoted Content</h2>
+          <p class="subtitle">No fees.</p>
+          <p class="subtitle">No minimum deposit.</p>
+          <p class="subtitle">High interest rates.</p>
+          <p class="text">Open a savings account with Argent Bank today!</p>
+        </section>
+    </div>
+  );
 };
 
 export default Nofees;
