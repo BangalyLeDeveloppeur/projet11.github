@@ -1,0 +1,40 @@
+.sign-in-content {
+  box-sizing: border-box;
+  background-color: white;
+  width: 300px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  .input-wrapper {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 1rem;
+
+    input#username ,input#password{
+        height: 35px;
+    }
+}
+
+  i.fa.fa-user-circle.sign-in-icon ,h1 {
+    display: flex;
+    justify-content: center;
+  }
+  .sign-in-button {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    border-color: #00bc77;
+    background-color: #00bc77;
+    color: #fff;
+}
+}
+.section-form {
+  height: 40rem;
+  margin-top: 3rem;
+  background: #12002b;
+  padding: 70px 0px 0;
+}

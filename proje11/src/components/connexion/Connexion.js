@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-const user = () => {
+const Connexion = () => {
   return (
-    <div>
+    <div className='section-form '>
       <section class="sign-in-content">
         <i class="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
@@ -27,4 +27,4 @@ const user = () => {
   );
 };
 
-export default user;
+export default Connexion;

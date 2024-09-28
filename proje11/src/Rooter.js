@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 
 import Layout from "./components/layoutt/Layout";
-
+import PageUser from "./pages/PageConnexion";
 
 const Rooter = () => {
   return (
@@ -11,7 +11,9 @@ const Rooter = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          {/* Route pour la page d'erreur */}
+          <Route path="about" element={<PageUser />} />
+          
+         
         </Route>
       </Routes>
     </BrowserRouter>
