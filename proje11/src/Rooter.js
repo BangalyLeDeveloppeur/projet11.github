@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 
 import Layout from "./components/layoutt/Layout";
 import PageUser from "./pages/PageConnexion";
+import Tranjaction from "./pages/Tranjaction";
 
 const Rooter = () => {
   return (
@@ -12,6 +13,7 @@ const Rooter = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<PageUser />} />
+          <Route path="tranjaction" element={<Tranjaction />} />
           
          
         </Route>
