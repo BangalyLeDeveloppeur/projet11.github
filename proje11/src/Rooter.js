@@ -13,7 +13,7 @@ const Rooter = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<PageUser />} />
-          <Route path="tranjaction" element={<Tranjaction />} />
+          <Route path="tranjaction" element={<Tranjaction/>} />
           
          
         </Route>
