@@ -1,8 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
-import infoLoginSlice from "./Slice/InfoLoginSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import infoLoginSlice from './Slice/InfoLoginSlice'; // Importer ton slice
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
-    infoLogin: infoLoginSlice,
+    infologin: infoLoginSlice.reducer, // Enregistre ton reducer
   },
 });
+
+export default store;

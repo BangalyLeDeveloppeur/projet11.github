@@ -1,27 +1,44 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {};
+const initialState = {
+  token: false,
+  connected: false,
+  errorMessage: "",
+  loading: false,
+};
 
 export const infoLoginSlice = createSlice({
   name: "infologin",
   initialState,
   reducers: {
-    //increment: (state) => {
-    // Redux Toolkit allows us to write "mutating" logic in reducers. It
-    // doesn't actually mutate the state because it uses the Immer library,
-    // which detects changes to a "draft state" and produces a brand new
-    // immutable state based off those changes
-    //},
-    //decrement: (state) => {
-    // state.value -= 1;
-    //},
-    //incrementByAmount: (state, action) => {
-    // state.value += action.payload;
-    //},
+    loginStart: (state) => {
+      state.loading = true;
+      state.errorMessage = ""; // Reset de l'erreur au démarrage
+    },
+
+    LoginSuccess: (state, action) => {
+      const { token } = action.payload;
+      state.token = token;
+      state.errorMessage = "";
+      state.connected = true;
+      state.loading = false;
+    },
+    LoginFailed: (state, action) => {
+      const { errorMessage } = action.payload;
+      state.token = null;
+      state.errorMessage = errorMessage;
+      state.connected = false;
+      state.loading = false;
+    },
+
+    logout: (state) => {
+      state.token = null;
+      state.connected = false;
+      state.errorMessage = "";
+    },
   },
 });
 
-// Action creators are generated for each case reducer function
-//export const {  } = counterSlice.actions;
+export const { loginStart, loginSuccess, loginFailed, logout } = infoLoginSlice.actions;
 
 export default infoLoginSlice;
