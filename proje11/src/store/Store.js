@@ -1,5 +1,5 @@
-import { configureStore } from '@reduxjs/toolkit';
-import infoLoginSlice from './Slice/InfoLoginSlice'; // Importer ton slice
+import { configureStore } from "@reduxjs/toolkit";
+import infoLoginSlice from "./Slice/InfoLoginSlice"; // Importer ton slice
 
 const store = configureStore({
   reducer: {

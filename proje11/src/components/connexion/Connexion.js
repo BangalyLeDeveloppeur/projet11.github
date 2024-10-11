@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginStart, loginSuccess, loginFailed } from "../../store/Slice/InfoLoginSlice";
+import {
+  loginStart,
+  LoginSuccess,
+  LoginFailed,
+} from "../../store/Slice/InfoLoginSlice";
 
 const Connexion = () => {
   const [username, setUsername] = useState("");
@@ -9,6 +13,7 @@ const Connexion = () => {
   const dispatch = useDispatch();
   const { loading, errorMessage } = useSelector((state) => state.infologin); // Accéder à l'état d'authentification
 
+  //pour recupérer les données dans le formulaire
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "username") {
@@ -18,11 +23,10 @@ const Connexion = () => {
     }
   };
 
+  // la fonction qui gère lenvoi des données du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     dispatch(loginStart());
-
     try {
       const response = await fetch("/api/auth/login", {
         method: "POST",
@@ -35,12 +39,12 @@ const Connexion = () => {
       const data = await response.json();
 
       if (response.ok) {
-        dispatch(loginSuccess({ token: data.token }));
+        dispatch(LoginSuccess({ token: data.token }));
       } else {
-        dispatch(loginFailed({ errorMessage: data.message }));
+        dispatch(LoginFailed({ errorMessage: data.message }));
       }
     } catch (error) {
-      dispatch(loginFailed({ errorMessage: "Erreur réseau ou serveur." }));
+      dispatch(LoginFailed({ errorMessage: "Erreur réseau ou serveur." }));
     }
   };
 

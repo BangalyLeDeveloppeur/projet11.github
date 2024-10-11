@@ -39,6 +39,6 @@ export const infoLoginSlice = createSlice({
   },
 });
 
-export const { loginStart, loginSuccess, loginFailed, logout } = infoLoginSlice.actions;
+export const { loginStart,LoginSuccess, LoginFailed, logout } = infoLoginSlice.actions;
 
 export default infoLoginSlice;
