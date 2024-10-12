@@ -1,6 +1,7 @@
 {
   "name": "proje11",
   "version": "0.1.0",
+  "main": "server.js",
   "private": true,
   "dependencies": {
     "@redux-devtools/extension": "^3.3.0",
@@ -9,6 +10,10 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.7.7",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1",
+    "mongoose": "^8.7.1",
+    "nodemon": "^3.1.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",

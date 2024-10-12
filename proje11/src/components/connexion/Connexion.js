@@ -1,14 +1,30 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import {
   loginStart,
   LoginSuccess,
   LoginFailed,
 } from "../../store/Slice/InfoLoginSlice";
+//////
+import axios from "axios";
+const getwork = () => {
+  axios
+    .get("http://localhost:3001/")
+    .then((res) => {
+      console.log(res); // res.data contient les données de la réponse
+      
+    })
+    .catch((error) => {
+      console.error("Erreur lors de la requête:", error); // Gestion des erreurs
+    });
+};
+getwork();
 
 const Connexion = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const naigate = useNavigate();
 
   const dispatch = useDispatch();
   const { loading, errorMessage } = useSelector((state) => state.infologin); // Accéder à l'état d'authentification
@@ -22,13 +38,12 @@ const Connexion = () => {
       setPassword(value);
     }
   };
-
   // la fonction qui gère lenvoi des données du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(loginStart());
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch("http://localhost:3001/api/v1/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,11 +55,18 @@ const Connexion = () => {
 
       if (response.ok) {
         dispatch(LoginSuccess({ token: data.token }));
+        naigate("/Tranjaction");
+        console.log("yess,je suis bien connecté!");
       } else {
         dispatch(LoginFailed({ errorMessage: data.message }));
       }
     } catch (error) {
-      dispatch(LoginFailed({ errorMessage: "Erreur réseau ou serveur." }));
+      dispatch(
+        LoginFailed({
+          errorMessage:
+            "Erreur réseau ou serveur; veuillez vous ajouté l'adress de l'api.",
+        })
+      );
     }
   };
 
