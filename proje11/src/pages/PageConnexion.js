@@ -1,15 +1,11 @@
-import React from 'react';
-import Connexion from '../components/connexion/Connexion';
-
-
-
+import Connexion from "../components/connexion/Connexion";
 
 const PageConnexion = () => {
-    return (
-        <div>
+  return (
+    <div>
       <Connexion />
-        </div>
-    );
+    </div>
+  );
 };
 
 export default PageConnexion;

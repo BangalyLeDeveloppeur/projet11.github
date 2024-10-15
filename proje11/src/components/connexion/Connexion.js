@@ -3,28 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   loginStart,
-  LoginSuccess,
-  LoginFailed,
+  loginSuccess,
+  loginFailed,
 } from "../../store/Slice/InfoLoginSlice";
-//////
-import axios from "axios";
-const getwork = () => {
-  axios
-    .get("http://localhost:3001/")
-    .then((res) => {
-      console.log(res); // res.data contient les données de la réponse
-      
-    })
-    .catch((error) => {
-      console.error("Erreur lors de la requête:", error); // Gestion des erreurs
-    });
-};
-getwork();
 
 const Connexion = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const naigate = useNavigate();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const { loading, errorMessage } = useSelector((state) => state.infologin); // Accéder à l'état d'authentification
@@ -54,15 +40,15 @@ const Connexion = () => {
       const data = await response.json();
 
       if (response.ok) {
-        dispatch(LoginSuccess({ token: data.token }));
-        naigate("/Tranjaction");
+        dispatch(loginSuccess({ token: data.token }));
+        navigate("/Tranjaction");
         console.log("yess,je suis bien connecté!");
       } else {
-        dispatch(LoginFailed({ errorMessage: data.message }));
+        dispatch(loginFailed({ errorMessage: data.message }));
       }
     } catch (error) {
       dispatch(
-        LoginFailed({
+        loginFailed({
           errorMessage:
             "Erreur réseau ou serveur; veuillez vous ajouté l'adress de l'api.",
         })
@@ -102,6 +88,7 @@ const Connexion = () => {
             <input type="checkbox" id="remember-me" />
             <label htmlFor="remember-me">Remember me</label>
           </div>
+
           <button className="sign-in-button" type="submit" disabled={loading}>
             {loading ? "Connexion en cours..." : "Sign In"}
           </button>
