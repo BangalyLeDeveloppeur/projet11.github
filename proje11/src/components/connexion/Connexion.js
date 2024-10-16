@@ -23,6 +23,7 @@ const Connexion = () => {
     } else if (name === "password") {
       setPassword(value);
     }
+    console.log(username)
   };
   // la fonction qui gère lenvoi des données du formulaire
   const handleSubmit = async (e) => {

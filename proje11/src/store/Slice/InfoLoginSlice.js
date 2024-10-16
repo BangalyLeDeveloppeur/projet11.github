@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isAuthenticated: false,
-  token: null,
+  token:null,
   connected: false,
   errorMessage: "",
   loading: false,
@@ -15,13 +15,13 @@ export const infoLoginSlice = createSlice({
     // Commence le processus de login
     loginStart: (state) => {
       state.loading = true;
-      state.errorMessage = ""; 
+      state.errorMessage = "";
     },
 
     // Si le login est réussi
     loginSuccess: (state, action) => {
       const { token } = action.payload;
-      state.isAuthenticated = true; // Correction ici
+      state.isAuthenticated = true;
       state.token = token;
       state.errorMessage = "";
       state.connected = true;
@@ -32,7 +32,7 @@ export const infoLoginSlice = createSlice({
     loginFailed: (state, action) => {
       const { errorMessage } = action.payload;
       state.token = null;
-      state.isAuthenticated = false; // Ajout pour marquer comme déconnecté en cas d'erreur
+      state.isAuthenticated = false;
       state.errorMessage = errorMessage;
       state.connected = false;
       state.loading = false;
@@ -41,7 +41,7 @@ export const infoLoginSlice = createSlice({
     // Déconnexion
     logout: (state) => {
       state.token = null;
-      state.isAuthenticated = false; // Correction ici
+      state.isAuthenticated = false; 
       state.connected = false;
       state.errorMessage = "";
     },

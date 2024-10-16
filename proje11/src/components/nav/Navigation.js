@@ -27,14 +27,15 @@ const Navigation = () => {
             <NavLink
               to="/transaction"
               className={(nav) => (nav.isActive ? "nav-active" : "")}
+              
             >
+              
               <li>
                 <i className="fa fa-user-circle"></i>
               </li>
             </NavLink>
             <li>
               <button onClick={handleLogout} className="logout-button">
-                <i className="fa fa-sign-out"></i>
                 Logout
               </button>
             </li>
