@@ -1,15 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { loginSuccess } from "../../store/Slice/InfoLoginSlice";
 
 const Wellcom = () => {
+  const dispatch = useDispatch();
+  const { username, token } = useSelector((state) => state.infologin);
+  const isAuthenticated = !!username;
+
+  // Gérer la saisie du nouveau nom
+  const [newName, setNewName] = useState("");
+
+  const handleEditName = () => {
+    if (token && newName) {
+      dispatch(loginSuccess({ token, username: newName }));
+    }
+  };
+
   return (
     <div className="wellcom">
-      <div class="wellcom-header">
+      <div className="wellcom-header">
         <h1>
           Welcome back
           <br />
-          Tony Jarvis!
+          {isAuthenticated ? username : "bonjour"}!
         </h1>
-        <button class="edit-button">Edit Name</button>
+        <input
+          type="text"
+          placeholder="Enter new name"
+          value={newName}
+          onChange={(e) => setNewName(e.target.value)}
+        />
+        <button className="edit-button" onClick={handleEditName}>
+          Edit Name
+        </button>
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ const Connexion = () => {
   const dispatch = useDispatch();
   const { loading, errorMessage } = useSelector((state) => state.infologin); // Accéder à l'état d'authentification
 
+  const nom = username;
   //pour recupérer les données dans le formulaire
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -23,7 +24,7 @@ const Connexion = () => {
     } else if (name === "password") {
       setPassword(value);
     }
-    console.log(username)
+    console.log(nom);
   };
   // la fonction qui gère lenvoi des données du formulaire
   const handleSubmit = async (e) => {
@@ -41,8 +42,10 @@ const Connexion = () => {
       const data = await response.json();
 
       if (response.ok) {
-        dispatch(loginSuccess({ token: data.token }));
+        const user = data.username || username;
+        dispatch(loginSuccess({ token: data.token, username: user }));
         navigate("/Tranjaction");
+
         console.log("yess,je suis bien connecté!");
       } else {
         dispatch(loginFailed({ errorMessage: data.message }));
