@@ -6,6 +6,7 @@ const initialState = {
   errorMessage: "",
   loading: false,
   username: null,
+  editName: "",
 };
 
 export const infoLoginSlice = createSlice({
@@ -37,6 +38,12 @@ export const infoLoginSlice = createSlice({
       state.loading = false;
       state.username = null;
     },
+    editName: (state, action) => {
+      const { token, username } = action.payload;
+      state.token = token;
+      state.isAuthenticated = true;
+      state.username = username;
+    },
 
     // Déconnexion
     logout: (state) => {
@@ -48,7 +55,7 @@ export const infoLoginSlice = createSlice({
   },
 });
 
-export const { loginStart, loginSuccess, loginFailed, logout } =
+export const { loginStart, loginSuccess, loginFailed, logout, editName } =
   infoLoginSlice.actions;
 
 export default infoLoginSlice;
