@@ -1,7 +1,12 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
   height: 100px;
-  color: red;
+}
+
+.Home-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .navigation {
@@ -30,7 +35,9 @@ body {
   gap: 3px;
 }
 .navigation ul li {
+  font-weight: bold;
   list-style: none;
+  color: #2c3e50;
 }
 
 .nofee {
@@ -38,4 +45,184 @@ body {
   margin: 36px 0;
   height: 380px;
   position: relative;
+}
+.nofee .nofee-content {
+  position: relative;
+  top: 2rem;
+  width: 300px;
+  left: 30%;
+  background: white;
+  padding: 2rem;
+  margin: 0 auto;
+}
+.nofee .subtitle {
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.feature-item {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  padding: 2.5rem;
+}
+.feature-item img {
+  width: 100px;
+  border: 10px solid #00bc77;
+  border-radius: 50%;
+  padding: 1rem;
+}
+.feature-item title {
+  color: #222;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.sign-in-content {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  background-color: white;
+  width: 300px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.sign-in-content .input-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.sign-in-content .input-wrapper input#username, .sign-in-content .input-wrapper input#password {
+  height: 35px;
+}
+.sign-in-content i.fa.fa-user-circle.sign-in-icon, .sign-in-content h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.sign-in-content .sign-in-button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+}
+
+.section-form {
+  height: 40rem;
+  margin-top: 3rem;
+  background: #12002b;
+  padding: 70px 0px 0;
+}
+
+@media (min-width: 920px) {
+  .hero-content {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 300px;
+    margin: 2rem;
+  }
+  .account {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+.wellcom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #12002b;
+}
+.wellcom .wellcom-header {
+  color: #fff;
+  margin-bottom: 2rem;
+}
+.wellcom .wellcom-header button {
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.wellcom {
+  background-color: #12002b;
+}
+.wellcom .account {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid black;
+  background-color: #fff;
+  width: 80%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+.wellcom .account .account-title {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: normal;
+}
+.wellcom .account .account-amount {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.wellcom .account .transaction-button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 1rem;
+  border-color: #00bc77;
+  background-color: #00bc77;
+  color: #fff;
+  cursor: pointer;
+}
+
+.footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-top: 2px solid #ccc;
+  padding: 2rem 0 1.5rem;
 }/*# sourceMappingURL=index.css.map */

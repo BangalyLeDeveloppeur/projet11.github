@@ -13,7 +13,7 @@ const Rooter = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<PageUser />} />
-          <Route path="tranjaction" element={<Transaction />} />
+          <Route path="transaction" element={<Transaction />} />
         </Route>
       </Routes>
     </BrowserRouter>

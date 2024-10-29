@@ -1,12 +1,13 @@
-import Wellcom from "../components/wellcom/Wellcom";
 import Account from "../components/account/Account";
+import Welcome from "../components/welcome/Welcome";
+
 
 
 const Transaction = () => {
  
   return (
     <div>
-      <Wellcom />
+      <Welcome />
       <Account
         title={"Argent Bank Checking (x8349)"}
         solde={"$2,082.79"}

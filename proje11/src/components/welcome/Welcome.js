@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { editName } from "../../store/Slice/InfoLoginSlice";
 
-const Wellcom = () => {
+const Welcome = () => {
   const dispatch = useDispatch();
-  const { username, token } = useSelector((state) => state.infologin);
-  const isAuthenticated = !!username;
+  const { userName, token } = useSelector((state) => state.infologin);
+  const isAuthenticated = !!userName;
 
   // Gérer la saisie du nouveau nom
   const [newName, setNewName] = useState("");
@@ -16,7 +16,7 @@ const Wellcom = () => {
       return;
     }
     try {
-      const response = await fetch (
+      const response = await fetch(
         "http://localhost:3001/api/v1/user/profile",
         {
           method: "PUT",
@@ -24,12 +24,12 @@ const Wellcom = () => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ name: newName }),
+          body: JSON.stringify({ userName: newName }),
         }
       );
 
       if (response.ok) {
-        dispatch(editName({ token, username: newName }));
+        dispatch(editName({ token, userName: newName }));
         console.log("Le nom a été mis à jour avec succès");
       } else {
         console.error("échec de la mise à jour du nom d'utilisateur");
@@ -45,7 +45,7 @@ const Wellcom = () => {
           Welcome back
           <br />
           {isAuthenticated
-            ? username
+            ? userName
             : "Bonjour, le nom de l'utilisateur n'est pas affiché"}
           !
         </h1>
@@ -55,7 +55,11 @@ const Wellcom = () => {
           value={newName}
           onChange={(e) => setNewName(e.target.value)}
         />
-        <button className="edit-button" onClick={handleEditName} disabled={!newName}>
+        <button
+          className="edit-button"
+          onClick={handleEditName}
+          disabled={!newName}
+        >
           Edit Name
         </button>
       </div>
@@ -63,4 +67,4 @@ const Wellcom = () => {
   );
 };
 
-export default Wellcom;
+export default Welcome;

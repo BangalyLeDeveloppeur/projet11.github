@@ -1,21 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import {
-  loginStart,
-  loginSuccess,
-  loginFailed,
-} from "../../store/Slice/InfoLoginSlice";
+import { loginStart } from "../../store/Slice/InfoLoginSlice";
+import useLogin from "../apibank/Api.js";
 
 const Connexion = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const login = useLogin();
 
   const dispatch = useDispatch();
   const { loading, errorMessage } = useSelector((state) => state.infologin); // Accéder à l'état d'authentification
 
-  const nom = username;
   //pour recupérer les données dans le formulaire
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -24,42 +19,13 @@ const Connexion = () => {
     } else if (name === "password") {
       setPassword(value);
     }
-    console.log(nom);
   };
   // la fonction qui gère lenvoi des données du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(loginStart());
-    try {
-      const response = await fetch("http://localhost:3001/api/v1/user/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        const user = data.username || username;
-        dispatch(loginSuccess({ token: data.token, username: user }));
-        navigate("/Tranjaction");
-
-        console.log("yess,je suis bien connecté!");
-      } else {
-        dispatch(loginFailed({ errorMessage: data.message }));
-      }
-    } catch (error) {
-      dispatch(
-        loginFailed({
-          errorMessage:
-            "Erreur réseau ou serveur; veuillez vous ajouté l'adress de l'api.",
-        })
-      );
-    }
+    dispatch(loginStart(username, password));
+    login(username, password);
   };
-
   return (
     <div className="section-form">
       <section className="sign-in-content">
