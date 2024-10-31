@@ -7,6 +7,8 @@ const initialState = {
   loading: false,
   username: null,
   editName: "",
+  firstName: null,
+  
 };
 
 export const infoLoginSlice = createSlice({
@@ -21,12 +23,13 @@ export const infoLoginSlice = createSlice({
 
     // Si le login est réussi
     loginSuccess: (state, action) => {
-      const { token, username } = action.payload;
+      const { token, username, firstName } = action.payload;
       state.isAuthenticated = true;
       state.token = token;
       state.errorMessage = "";
       state.loading = false;
       state.username = username;
+      state.firstName = firstName;
     },
 
     // Si le login échoue

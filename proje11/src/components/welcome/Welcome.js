@@ -4,8 +4,11 @@ import { editName } from "../../store/Slice/InfoLoginSlice";
 
 const Welcome = () => {
   const dispatch = useDispatch();
-  const { userName, token } = useSelector((state) => state.infologin);
-  const isAuthenticated = !!userName;
+  const {token, firstName
+  ,isAuthenticated} = useSelector((state) => state.infologin);
+  
+
+  
 
   // Gérer la saisie du nouveau nom
   const [newName, setNewName] = useState("");
@@ -30,7 +33,7 @@ const Welcome = () => {
 
       if (response.ok) {
         dispatch(editName({ token, userName: newName }));
-        console.log("Le nom a été mis à jour avec succès");
+        console.log("Nom d'utilisateur est mis en jour avec succès");
       } else {
         console.error("échec de la mise à jour du nom d'utilisateur");
       }
@@ -44,9 +47,7 @@ const Welcome = () => {
         <h1>
           Welcome back
           <br />
-          {isAuthenticated
-            ? userName
-            : "Bonjour, le nom de l'utilisateur n'est pas affiché"}
+          {isAuthenticated ? `${firstName}` : "Username not displayed!"}
           !
         </h1>
         <input

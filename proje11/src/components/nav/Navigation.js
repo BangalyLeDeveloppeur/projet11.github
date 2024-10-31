@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/Slice/InfoLoginSlice";
 
 const Navigation = () => {
-  const isAuthenticated = useSelector((state) => state.infologin.isAuthenticated);
+  const { isAuthenticated, firstName } = useSelector(
+    (state) => state.infologin
+  );
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    dispatch(logout()); 
-    navigate("/about"); 
+    dispatch(logout());
+    navigate("/about");
   };
 
   return (
@@ -27,19 +29,18 @@ const Navigation = () => {
             <NavLink
               to="/transaction"
               className={(nav) => (nav.isActive ? "nav-active" : "")}
-              
             >
-              
               <li>
                 <i className="fa fa-user-circle"></i>
               </li>
             </NavLink>
             <li>
               <button onClick={handleLogout} className="logout-button">
-                Logout
+                <span>{firstName}</span>
+                <i class="fa fa-sign-out"></i>
+                sign out
               </button>
             </li>
-           
           </>
         ) : (
           <>

@@ -1,10 +1,10 @@
+
 import Account from "../components/account/Account";
 import Welcome from "../components/welcome/Welcome";
 
 
-
 const Transaction = () => {
- 
+  
   return (
     <div>
       <Welcome />

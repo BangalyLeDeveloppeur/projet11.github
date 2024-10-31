@@ -20,8 +20,22 @@ const useLogin = () => {
       console.log(data);
 
       if (response.ok) {
-        const user = data.username || username;
-        dispatch(loginSuccess({ token: data.token, username: user }));
+        const profileResponse = await fetch(
+          "http://localhost:3001/api/v1/user/profile",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${data.token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        const profileData = await profileResponse.json();
+        console.log(profileData)
+        const firstName = profileData.body.firstName;
+        dispatch(
+          loginSuccess({ token: data.token, username: username, firstName })
+        );
         navigate("/Transaction");
         console.log("Yes, successfully logged in!");
       } else {
