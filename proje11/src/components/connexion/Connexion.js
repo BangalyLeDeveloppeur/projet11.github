@@ -6,7 +6,7 @@ import useLogin from "../apibank/Api.js";
 const Connexion = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const login = useLogin();
+  const {Login} = useLogin();
 
   const dispatch = useDispatch();
   const { loading, errorMessage } = useSelector((state) => state.infologin); // Accéder à l'état d'authentification
@@ -19,14 +19,18 @@ const Connexion = () => {
     } else if (name === "password") {
       setPassword(value);
     }
-    console.log(username)
+    console.log(username);
   };
   // la fonction qui gère lenvoi des données du formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(loginStart(username, password));
-    login(username, password);
+    dispatch(loginStart());
+
+      Login(username, password);
+    
+
   };
+  
   return (
     <div className="section-form">
       <section className="sign-in-content">

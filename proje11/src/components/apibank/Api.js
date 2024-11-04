@@ -1,12 +1,51 @@
 import { useNavigate } from "react-router-dom";
-import { loginSuccess, loginFailed } from "../../store/Slice/InfoLoginSlice";
-import { useDispatch } from "react-redux";
+import {
+  loginSuccess,
+  loginFailed,
+  editName,
+} from "../../store/Slice/InfoLoginSlice";
+import { useDispatch} from "react-redux";
 
 const useLogin = () => {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  ///////////////////////////////////////////la gestion de modification///////////////////////
+  const handleEditName = async (token, newName) => {
+    if (!newName) {
+      console.error("Le nouveau nom est manquant");
 
-  const login = async (username, password) => {
+      return {success: false};
+    }
+    try {
+      const response = await fetch(
+        "http://localhost:3001/api/v1/user/profile",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ userName: newName }),
+        }
+      );
+
+      if (response.ok) {
+        dispatch(editName({ token, userName: newName }));
+        console.log("Nom d'utilisateur est mis en jour avec succès");
+       return { success: true, userName: newName }
+      } else {
+        console.error("échec de la mise à jour du nom d'utilisateur");
+        return { success: false }
+      }
+    } catch (error) {
+      console.error("Erreur pendant la requête fetch", error);
+      return { success: false }
+    }
+  };
+  ///////////////////////////////////////////////////////////////
+
+  const Login = async (username, password) => {
     try {
       const response = await fetch("http://localhost:3001/api/v1/user/login", {
         method: "POST",
@@ -31,7 +70,7 @@ const useLogin = () => {
           }
         );
         const profileData = await profileResponse.json();
-        console.log(profileData)
+        console.log(profileData);
         const firstName = profileData.body.firstName;
         dispatch(
           loginSuccess({ token: data.token, username: username, firstName })
@@ -52,7 +91,8 @@ const useLogin = () => {
     }
   };
 
-  return login;
+  return { Login, handleEditName };
 };
 
-export default useLogin;
+export default useLogin ;
+

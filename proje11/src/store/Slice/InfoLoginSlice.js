@@ -7,7 +7,7 @@ const initialState = {
   loading: false,
   username: null,
   editName: "",
-  firstName: null,
+  firstName: "",
   
 };
 
@@ -42,10 +42,7 @@ export const infoLoginSlice = createSlice({
       state.username = null;
     },
     editName: (state, action) => {
-      const { token, username } = action.payload;
-      state.token = token;
-      state.isAuthenticated = true;
-      state.username = username;
+      state.firstName = action.payload.userName;
     },
 
     // Déconnexion
