@@ -38,7 +38,7 @@ const Welcome = () => {
 
         {isEditing ? (
           <>
-            <input
+            <input className="new-name"
               type="text"
               placeholder="Enter new name"
               value={newName}
