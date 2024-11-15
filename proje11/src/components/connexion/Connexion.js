@@ -1,36 +1,35 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginStart } from "../../store/Slice/InfoLoginSlice";
-import useLogin from "../apibank/Api.js";
+import useLogin from "../apibank/useLogin";
 
 const Connexion = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const {Login} = useLogin();
+  const { login } = useLogin();
 
   const dispatch = useDispatch();
-  const { loading, errorMessage } = useSelector((state) => state.infologin); // Accéder à l'état d'authentification
+  const { loading, errorMessage } = useSelector((state) => state.infologin);
 
-  //pour recupérer les données dans le formulaire
+  // Handle input changes for username and password fields
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if (name === "username") {
-      setUsername(value);
-    } else if (name === "password") {
-      setPassword(value);
-    }
-    console.log(username);
+    name === "username" ? setUsername(value) : setPassword(value);
   };
-  // la fonction qui gère lenvoi des données du formulaire
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Dispatch login start action and await login response
     dispatch(loginStart());
-
-      Login(username, password);
-    
-
+    try {
+      await login(username, password);
+    } catch (error) {
+      console.error("Login error:", error);
+    }
   };
-  
+
   return (
     <div className="section-form">
       <section className="sign-in-content">
@@ -64,10 +63,19 @@ const Connexion = () => {
             <label htmlFor="remember-me">Remember me</label>
           </div>
 
-          <button className="sign-in-button" type="submit" disabled={loading}>
+          <button
+            className="sign-in-button"
+            type="submit"
+            disabled={loading || !username || !password}
+          >
             {loading ? "Connexion en cours..." : "Sign In"}
           </button>
-          {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+
+          {errorMessage && (
+            <p style={{ color: "red" }} aria-live="assertive">
+              {errorMessage}
+            </p>
+          )}
         </form>
       </section>
     </div>

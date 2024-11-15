@@ -8,7 +8,6 @@ const initialState = {
   username: null,
   editName: "",
   firstName: "",
-  
 };
 
 export const infoLoginSlice = createSlice({
