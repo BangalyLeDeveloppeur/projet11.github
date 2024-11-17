@@ -1,13 +1,41 @@
 @media (min-width: 920px) {
-    .hero-content {
-        position: absolute;
-        top: 50px;
-        right: 50px;
-        width: 300px;
-        margin: 2rem;
+  .hero-content {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 300px;
+    margin: 2rem;
+  }
+  .account {
+    flex-direction: row;
+  }
+}
+@media (max-width: 700px) {
+  .navigation {
+    button {
+      font-size: 0.8rem;
+      gap: 5px;
+      padding: 0;
     }
-    .account {
-        flex-direction: row;
+    ul {
+      padding: 0 0 0 10px;
     }
-
+  }
+  .welcome-header {
+    .new-name {
+      margin-left: 0%;
+    }
+  }
+  .nofee .nofee-content {
+    top: 1.5rem;
+    width: 50%;
+    left: 16%;
+    padding: 2rem;
+    .subtitle {
+      font-size: 1.3rem;
+    }
+  }
+  .Home-section {
+    flex-direction: column;
+  }
 }

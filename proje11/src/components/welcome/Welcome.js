@@ -46,7 +46,7 @@ const Welcome = () => {
   };
 
   const handleEditButtonClick = () => {
-    setIsEditing(true); // Show input field to edit name
+    setIsEditing(true); 
   };
 
   return (
@@ -73,7 +73,7 @@ const Welcome = () => {
               onClick={onEditName}
               disabled={!newName.trim()}
             >
-              Save
+              Enregistrer
             </button>
           </>
         ) : (

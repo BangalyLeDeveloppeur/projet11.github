@@ -3,8 +3,10 @@
 @use "../components/nofree/nofee";
 @use "../components/feacture/feature";
 @use "../components/connexion/connexion";
-@use "../styles/mediaquery";
+
 @use "../components/welcome//wellcom";
 @use "../components/account/account";
 
 @use "../components/footer/footer";
+
+@use "../styles/mediaquery";
