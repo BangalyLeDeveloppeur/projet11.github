@@ -1,9 +1,9 @@
 import React from "react";
 import Nofees from "../components/nofree/Nofees";
 import Feacture from "../components/feacture/Feature";
-import iconChat from "../assets/images/icon-chat.png";
-import iconMoney from "../assets/images/icon-money.png";
-import iconSecurite from "../assets/images/icon-security.png";
+import iconChat from "../assets/images/icon-chat.webp";
+import iconMoney from "../assets/images/icon-money.webp";
+import iconSecurite from "../assets/images/icon-security.webp";
 
 const need = (
   <p>

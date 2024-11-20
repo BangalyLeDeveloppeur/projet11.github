@@ -46,10 +46,10 @@ const useLogin = () => {
 
   const login = async (username, password) => {
     const resultat = await apiLogin(username, password);
-    //console.log(resultat.token)
+   // console.log(resultat.token)
     if (resultat.token) {
       const resultatProfile = apiGetProfile(resultat.token);
-      //console.log(resultatProfile.firstName)
+    
       if (resultatProfile) {
         dispatch(
           loginSuccess({
